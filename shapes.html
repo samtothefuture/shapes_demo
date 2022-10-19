@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JavaScript Shapes</title>
+	<link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<h1>Shapes!!!</h1>
+	</header>
+	<article>
+		<h2 id="user"></h2>
+		<h2>Click a Shape</h2>
+
+		<div id="square">
+			&nbsp;
+		</div>
+
+		<div id="triangle">
+			&nbsp;
+		</div>
+
+		<div id="circle">
+			&nbsp;
+		</div>
+	</article>
+
+	<script type="text/JavaScript">
+		//prompt the user for their name and store in a variable
+		let response = window.prompt("Please tell me your name:");
+
+		//check the value of the response variable and continue to prompt for name if it is NULL or empty
+		while(response === null || response === "") {
+			response = window.prompt("Sorry, please enter a valid name:");
+		}
+
+		//use the response value to change the content of the document
+		document.getElementById("user").textContent = "Greetings, " + response;
+
+		//collect all the divs and store them in an array variable
+		let allDivs = document.getElementsByTagName("div");
+
+		//loop through the allDivs array and add an event listener to each div
+		for(let x = 0; x < allDivs.length; x++) {
+			allDivs[x].addEventListener("click", helloShape);
+		}
+
+		//definition of the helloShape() function
+		function helloShape(event) {
+			//local variable to store the id of the target shape
+			let shapeID = event.target.id;
+			//output an alert box indicating which shape was clicked on
+			window.alert("You clicked on the " + shapeID);
+		}
+	</script>
+</body>
+</html>
